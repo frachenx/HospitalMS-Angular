@@ -1,0 +1,66 @@
+<h1>PATIENT | EDIT PATIENT</h1>
+<hr>
+<form class="form-patient" [formGroup]="this.patientForm" (ngSubmit)="handleSubmit()">
+    <div *ngIf="this.resultString==='1'" class="alert alert-success">Edited User Successfully</div>
+    <div *ngIf="this.resultString==='0'" class="alert alert-danger">Failed to Edit User</div>
+    <div class="form-group">
+        <label for="name" class="label-control">Patient Name</label>
+        <input formControlName="name" type="text" name="name" id="name" class="form-control">
+        <div *ngIf="this.name?.invalid && (this.name?.dirty || this.name?.touched)" class="text-danger">
+            <small *ngIf="this.name?.errors?.['required']">Name field is required</small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="contact" class="label-control">Patient Contact No.</label>
+        <input formControlName="contact" type="text" name="contact" id="contact" class="form-control">
+        <div *ngIf="this.contact?.invalid && (this.contact?.dirty || this.contact?.touched)" class="text-danger">
+            <small *ngIf="this.contact?.errors?.['required']">Contact field is required</small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="email" class="label-control">Patient Email</label>
+        <input formControlName="email" type="email" name="email" id="email" class="form-control">
+        <div *ngIf="this.email?.invalid && (this.email?.dirty || this.email?.touched)" class="text-danger">
+            <small *ngIf="this.email?.errors?.['required']">Email field is required</small>
+            <small *ngIf="this.email?.errors?.['email']">Field is of type email</small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="address" class="label-control">Address</label>
+        <textarea formControlName="address" name="address" id="address" rows="3" class="form-control">
+        </textarea>
+        <div *ngIf="this.address?.invalid && (this.address?.dirty || this.address?.touched)" class="text-danger">
+            <small *ngIf="this.address?.errors?.['required']">Address field is required</small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="gender" class="label-control">Gender</label>
+        <select formControlName="gender" name="gender" id="gender" class="form-control">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+        <div *ngIf="this.gender?.invalid && (this.gender?.dirty || this.gender?.touched)" class="text-danger">
+            <small *ngIf="this.gender?.errors?.['required']">Gender field is required</small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="age" class="label-control">Patient Age</label>
+        <input formControlName="age" type="number" name="age" id="age" class="form-control">
+        <div *ngIf="this.age?.invalid && (this.age?.dirty || this.age?.touched)" class="text-danger">
+            <small *ngIf="this.age?.errors?.['required']">Age field is required</small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="medicalHistory" class="label-control">Medical History</label>
+        <textarea formControlName="medicalHistory" name="medicalHistory" id="medicalHistory" rows="3" class="form-control">
+
+        </textarea>
+        <div *ngIf="this.medicalHistory?.invalid && (this.medicalHistory?.dirty || this.medicalHistory?.touched)" class="text-danger">
+            <small *ngIf="this.medicalHistory?.errors?.['required']">Medical History field is required</small>
+        </div>
+    </div>
+    <div class="from-group">
+        <input type="submit" value="Add Patient" class="btn btn-primary">
+    </div>
+</form>

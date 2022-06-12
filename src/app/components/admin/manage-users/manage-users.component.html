@@ -1,0 +1,51 @@
+<h1>ADMIN | MANAGE USERS</h1>
+
+<div class="container">
+    <h2>Manage Users</h2>
+    <div *ngIf="resultString==='1'" class="alert alert-success">User Deleted Successfully</div>
+    <div *ngIf="resultString==='0'" class="alert alert-danger">Failed To Delete User</div>
+    <div class="table-container custom-scroll">
+        <div></div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Full Name</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>Gender</th>
+                    <th>Email</th>
+                    <th>Created Date</th>
+                    <th>Updated Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users ; let i=index">
+                    <td>
+                        <div class="row-index">
+                            {{i+1}}
+                        </div>
+                    </td>
+                    <td class="cell-avatar">
+                        <i class="row-avatar fa-solid fa-user-astronaut"></i>
+                    </td>
+                    <td data-title="Full Name: ">{{user.fullname}}</td>
+                    <td data-title="Address: ">{{user.address}}</td>
+                    <td data-title="City: ">{{user.city}}</td>
+                    <td data-title="Gender: ">{{user.gender}}</td>
+                    <td data-title="Email: ">{{user.email}}</td>
+                    <td data-title="Created Date: ">{{user.createdDate}}</td>
+                    <td data-title="Updated Date: ">{{user.updatedDate}}</td>
+                    <td>
+                        <button class="btn btn-danger" (click)="DeleteUser(user.id)">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+    
+            </tbody>
+        </table>
+        <div></div>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+<h1>ADMIN | VIEW PATIENTS</h1>
+<form class="searchForm" [formGroup]="searchForm" (ngSubmit)="Submit()">
+    <div class="form-group" >
+        <label for="name" class="label-control">Search by name</label>
+        <input formControlName="name" type="text" name="name" id="name" class="form-control">
+        <input type="submit" value="Search" class="btn btn-primary">
+    </div>
+</form>
+
+<div *ngIf="this.patients!=null" class="table-container custom-scroll">
+    <span>Result against "{{this.searchForm.value.name}}" keyword</span>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Gender</th>
+                <th>Created Date</th>
+                <th>Updated Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let patient of patients;let i= index">
+                <td>
+                    <div class="row-index">
+                        {{i+1}}
+                    </div>
+                </td>
+                <td class="cell-avatar">
+                    <i class="row-avatar fa-solid fa-user-injured"></i>
+                </td>
+                <td data-title="Name: ">
+                    {{patient.name}}
+                </td>
+                <td data-title="Contact: ">
+                    {{patient.contact}}
+                </td>
+                <td data-title="Gender: ">
+                    {{patient.gender}}
+                </td>
+                <td data-title="Created Date: ">
+                    {{patient.createdDate}}
+                </td>
+                <td data-title="Updated Date: ">
+                    {{patient.updatedDate}}
+                </td>
+                <td>
+                    <a routerLink="/admin/view-patient/{{patient.id}}" class="btn btn-secondary">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

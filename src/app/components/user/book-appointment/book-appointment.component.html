@@ -1,0 +1,50 @@
+<h1>USER | BOOK APPOINTMENT</h1>
+<hr>
+<form class="appointment-form" [formGroup]="this.appointmentForm" (ngSubmit)="this.handleSubmit()">
+    <div *ngIf="this.resultString==='1'" class="alert alert-success">Booked Appointment Successfully</div>
+    <div *ngIf="this.resultString==='0'" class="alert alert-danger">Failed to Book Appointment</div>
+    <div class="form-group">
+        <label for="spec" class="label-control">Doctor Specialization</label>
+        <select formControlName="specID" name="spec" id="spec" class="form-control" (change)="this.getDoctors()">
+            <option selected value="">Select Specialization</option>
+            <option *ngFor="let spec of specialties" value="{{spec.id}}">{{spec.spec}}</option>            
+        </select>
+        <div *ngIf="this.specID?.invalid && (this.specID?.dirty || this.specID?.touched) " class="text-danger">
+            <small *ngIf="this.specID?.errors?.['required']">Specialty field is required</small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="doctor" class="label-control">Doctor</label>
+        <select formControlName="doctorID" name="doctor" id="doctor" class="form-control" (change)="this.getConsultancyFee()">
+            <option selected value="">Select Doctor</option>
+            <option *ngFor="let doctor of doctors" value="{{doctor.id}}">{{doctor.doctorName}}</option>
+        </select>
+        <div *ngIf="this.doctorID?.invalid && (this.doctorID?.dirty || this.doctorID?.touched) " class="text-danger">
+            <small *ngIf="this.doctorID?.errors?.['required']">Doctor field is required</small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="fee" class="label-control">Consultancy Fee</label>
+        <input formControlName="fee" type="number" name="fee" id="fee" class="form-control" readonly>
+        <div *ngIf="this.fee?.invalid && (this.fee?.dirty || this.fee?.touched) " class="text-danger">
+            <small *ngIf="this.fee?.errors?.['required']">Fee field is required</small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="date" class="label-control">Appointment Date</label>
+        <input formControlName="appointmentDate" type="date" name="date" id="date" class="form-control">
+        <div *ngIf="this.appointmentDate?.invalid && (this.appointmentDate?.dirty || this.appointmentDate?.touched) " class="text-danger">
+            <small *ngIf="this.appointmentDate?.errors?.['required']">Appointment date field is required</small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="time" class="label-control">Appointment Date</label>
+        <input formControlName="appointmentTime" type="time" name="time" id="time" class="form-control">
+        <div *ngIf="this.appointmentTime?.invalid && (this.appointmentTime?.dirty || this.appointmentTime?.touched) " class="text-danger">
+            <small *ngIf="this.appointmentTime?.errors?.['required']">Appointment time field is required</small>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Book Appointment" class="btn btn-primary">
+    </div>
+</form>

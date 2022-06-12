@@ -1,0 +1,52 @@
+<h1>DOCTOR | MANAGE PATIENTS</h1>
+<hr>
+<div class="table-container custome">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Patient Name</th>
+                <th>Patient Contact Number</th>
+                <th>Patient Gender</th>
+                <th>Created Date</th>
+                <th>Updated Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let patient of patients;let i=index">
+                <td>
+                    <div class="row-index">
+                        {{i+1}}
+                    </div>
+                </td>
+                <td class="cell-avatar">
+                    <i class="row-avatar fa-solid fa-bed-pulse"></i>
+                </td>
+                <td data-title="Patient Name: ">
+                    {{patient.name}}
+                </td>
+                <td data-title="Patient Contact No.: ">
+                    {{patient.contact}}
+                </td>
+                <td data-title="Patient Gender">
+                    {{patient.gender}}
+                </td>
+                <td data-title="Created Date: ">
+                    {{patient.createdDate}}
+                </td>
+                <td data-title="Updated Date: ">
+                    {{patient.updatedDate}}
+                </td>
+                <td>
+                    <a routerLink="/doctor/edit-patient/{{patient.id}}" class="btn btn-secondary">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </a>
+                    <a routerLink="/doctor/view-patient/{{patient.id}}" class="btn btn-secondary">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div> 

@@ -1,0 +1,121 @@
+<div class="sidebar custom-scroll">
+    <div class="sidebar-brand">
+        <i class="fa-solid fa-meteor"></i> HMS
+    </div>
+    <div class="sidebar-title">Main Navigation</div>
+    <hr class="hr-divider">
+    <div [ngSwitch]="this.role">
+        <div *ngSwitchCase="'admin'" class="sidebar-items">
+            <a routerLink="/admin/dashboard" class="sidebar-item">
+                <i class="fa-solid fa-gauge"></i> Dashboard
+                <span style="visibility: hidden;"></span>
+            </a>
+            <hr class="hr-divider">
+
+            <app-sidebar-item-dropdown [logo]="'fa-solid fa-user-doctor'" [title]="'Doctors'" [links]="[
+                    {route:'/admin/doctor-specialization',name:'Doctor Specialization'},
+                    {route:'/admin/add-doctor',name:'Add Doctor'},
+                    {route:'/admin/manage-doctors',name:'Manage Doctors'}
+                ]">
+            </app-sidebar-item-dropdown>
+            <hr class="hr-divider">
+
+            <app-sidebar-item-dropdown [logo]="'fa-solid fa-user-astronaut'" [title]="'Users'" [links]="[
+                    {route:'/admin/manage-users',name:'Manage Users'}
+                ]">
+            </app-sidebar-item-dropdown>
+            <hr class="hr-divider">
+
+            <app-sidebar-item-dropdown [logo]="'fa-solid fa-bed-pulse'" [title]="'Patients'" [links]="[
+                    {route:'/admin/manage-patients',name:'Manage Patients'}
+                ]">
+            </app-sidebar-item-dropdown>
+            <hr class="hr-divider">
+
+            <a routerLink="/admin/appointment-history" class="sidebar-item">
+                <i class="fa-solid fa-calendar-check"></i> Appointments
+                <span style="visibility: hidden;"></span>
+            </a>
+            <hr class="hr-divider">
+
+            <app-sidebar-item-dropdown [logo]="'fa-solid fa-envelope'" [title]="'Contact Us'" [links]="[
+                    {route:'/admin/unread-queries',name:'Unread Queries'},
+                    {route:'/admin/read-queries',name:'Read Queries'}
+                ]">
+            </app-sidebar-item-dropdown>
+            <hr class="hr-divider">
+
+            <a routerLink="/admin/doctor-logs" class="sidebar-item">
+                <i class="fa-solid fa-chart-column"></i> Doctor Logs
+                <span style="visibility: hidden;"></span>
+            </a>
+            <hr class="hr-divider">
+
+            <a routerLink="/admin/user-logs" class="sidebar-item">
+                <i class="fa-solid fa-chart-column"></i> User Logs
+                <span style="visibility: hidden;"></span>
+            </a>
+            <hr class="hr-divider">
+
+            <app-sidebar-item-dropdown [logo]="'fa-solid fa-book-open'" [title]="'Reports'" [links]="[
+                    {route:'/admin/between-dates-report',name:'Between Dates'}
+                ]">
+            </app-sidebar-item-dropdown>
+            <hr class="hr-divider">
+
+            <a routerLink="/admin/patient-search" class="sidebar-item">
+                <i class="fa-solid fa-magnifying-glass"></i> Patient Search
+                <span style="visibility: hidden;"></span>
+            </a>
+            <hr class="hr-divider">
+        </div>
+        <div *ngSwitchCase="'doctor'" class="sidebar-items">
+            <a routerLink="/doctor/dashboard" class="sidebar-item">
+                <i class="fa-solid fa-gauge"></i> Dashboard
+                <span style="visibility: hidden;"></span>
+            </a>
+            <hr class="hr-divider">
+
+            <a routerLink="/doctor/appointment-history" class="sidebar-item">
+                <i class="fa-solid fa-calendar-check"></i> Appointments
+                <span style="visibility: hidden;"></span>
+            </a>
+            <hr class="hr-divider">
+
+            <app-sidebar-item-dropdown 
+                [logo]="'fa-solid fa-bed-pulse'" 
+                [title]="'Patients'"   
+                [links]="[
+                    {route:'/doctor/add-patient',name:'Add Patient'},
+                    {route:'/doctor/manage-patients',name:'Manage Patients'}
+                ]">
+            </app-sidebar-item-dropdown>
+            <hr class="hr-divider">
+
+            <a routerLink="/doctor/patient-search" class="sidebar-item">
+                <i class="fa-solid fa-magnifying-glass"></i>Search
+                <span style="visibility: hidden;"></span>
+            </a>
+            <hr class="hr-divider">
+        </div>
+        <div *ngSwitchCase="'user'" class="sidebar-items">
+            <a routerLink="/user/dashboard" class="sidebar-item">
+                <i class="fa-solid fa-gauge"></i> Dashboard
+                <span style="visibility: hidden;"></span>
+            </a>
+            <hr class="hr-divider">
+
+            <a routerLink="/user/book-appointment" class="sidebar-item">
+                <i class="fa-solid fa-book-open"></i> Book Appointment
+                <span style="visibility: hidden;"></span>
+            </a>
+            <hr class="hr-divider">
+
+            <a routerLink="/user/appointments" class="sidebar-item">
+                <i class="fa-solid fa-book-open"></i> Appointments
+                <span style="visibility: hidden;"></span>
+            </a>
+            <hr class="hr-divider">
+        </div>
+    </div>
+</div>

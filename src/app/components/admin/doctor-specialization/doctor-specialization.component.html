@@ -1,0 +1,54 @@
+<h1>ADMIN | ADD DOCTOR SPECIALIZATION</h1>
+<hr>
+<h2>Doctor Specialization</h2>
+<form class="specForm" [formGroup]="this.specForm" (ngSubmit)="this.Add()">
+    <div *ngIf="this.resultStringAdd==='1'" class="alert alert-success">Added Specialty Successfully</div>
+    <div *ngIf="this.resultStringAdd==='0'" class="alert alert-danger">Failed to Add Specialty</div>
+    
+    <div class="form-group">
+        <label for="spec" class="label-control">Doctor Specialization</label>
+        <input formControlName="spec" type="text" name="spec" id="spec" class="form-control">
+        <input type="submit" value="Add Specialization" class="btn btn-primary">
+    </div>
+</form>
+<hr>
+
+<div class="table-container custom-scroll">
+    <h2>Manage Docter Specialization</h2>
+    <div *ngIf="this.resultStringDelete==='1'" class="alert alert-success">Deleted Specialty Successfully</div>
+    <div *ngIf="this.resultStringDelete==='0'" class="alert alert-danger">Failed to Delete Specialty</div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td>#</td>
+                <td>Specialization</td>
+                <td>Creation Date</td>
+                <td>Updated Date</td>
+                <td>Actions</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let specialty of specialties; let i=index">
+                <td>
+                    <div class="row-index">
+                        {{i+1}}
+                    </div>
+                </td>
+                <td class="cell-avatar">
+                    <i class="row-avatar fa-solid fa-user-doctor"></i>
+                </td>
+                <td data-title="Specialization: ">{{specialty.spec}}</td>
+                <td data-title="Creation Date: ">{{specialty.createdDate}}</td>
+                <td data-title="Updated Date: ">{{specialty.updatedDate}}</td>
+                <td>
+                    <a routerLink="/admin/edit-doctor-specialization/{{specialty.id}}" class="btn btn-secondary">
+                        <i class="fa-solid fa-marker"></i>
+                    </a>
+                    <button class="btn btn-danger" (click)="Delete(specialty.id)">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

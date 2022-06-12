@@ -1,0 +1,37 @@
+.user-login-container{
+    display: flex;
+    justify-content: space-between;
+}
+.user-login{
+    background-color: #E8F9FD;
+    padding: 1rem 2rem;
+    margin: 2rem;
+    border-radius: 0.3rem;
+    /* box-shadow: 5px 10px rgba(0, 0, 0, 0.1); */
+    box-shadow: 10px 20px 10px grey;
+}
+
+.title{
+    text-align: center;
+}
+
+.subtitle-1{
+    color: #2256CD;
+    font-size: 1.5rem;
+    /* font-weight: bold; */
+}
+
+.subtitle-2{
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.login{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2rem;
+}
+
+a.login-link{
+    color:#2780E3;
+}

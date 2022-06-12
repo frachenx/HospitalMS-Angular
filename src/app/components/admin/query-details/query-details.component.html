@@ -1,0 +1,47 @@
+<h1>ADMIN | QUERY DETAILS</h1>
+
+<div class="table-container custom-scroll">
+    <div *ngIf="this.resultString==='1'" class="alert alert-success">Updated Query Successfully</div>
+    <div *ngIf="this.resultString==='0'" class="alert alert-danger">Failed to Update Query</div>
+    <table class="table-details">
+        <tbody>
+            <tr>
+                <td class="title" colspan="2" >Manage Query Details</td>
+            </tr>
+            <tr>
+                <td class="cell-title"><strong>Full Name</strong></td>
+                <td>{{this.query.name}}</td>
+            </tr>
+            <tr>
+                <td class="cell-title"><strong>Email</strong></td>
+                <td>{{this.query.email}}</td>
+            </tr>
+            <tr>
+                <td class="cell-title"><strong>Contact No.</strong></td>
+                <td>{{this.query.contact}}</td>
+            </tr>
+            <tr>
+                <td class="cell-title"><strong>Message</strong></td>
+                <td>{{this.query.message}}</td>
+            </tr>
+            <tr>
+                <td class="cell-title"><strong>Admin Remark</strong></td>
+                <td *ngIf="this.query.adminRemark===''">
+                    <form id="remarkForm" [formGroup]="this.remarkForm" (ngSubmit)="Submit()">
+                        <textarea formControlName="remark" class="form-control" name="remark" id="remark" rows="2">
+                            {{this.query.adminRemark}}
+                        </textarea>
+                        <input type="submit" value="Update" class="btn btn-primary col-12">
+                    </form>
+                </td>
+                <td *ngIf="this.query.adminRemark!==''">
+                    {{this.query.adminRemark}}
+                </td>
+            </tr>
+            <tr *ngIf="this.query.adminRemark!==''">
+                <td class="cell-title"><strong>Updated Date</strong></td>
+                <td>{{this.query.updatedDate}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

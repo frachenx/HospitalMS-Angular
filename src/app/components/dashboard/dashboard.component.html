@@ -1,0 +1,119 @@
+<h1>{{this.role.toUpperCase()}} | DASHBOARD</h1>
+<div [ngSwitch]="this.role">
+    <div *ngSwitchCase="'admin'" class="card-group">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa-solid fa-users fa-2x"></i>
+            </div>
+            <div class="card-body">
+                <div class="card-text">
+                    Manage Users
+                </div>
+                <a routerLink="/admin/manage-users" class="card-link">Total Users: {{this.totalUsers}}</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <i class="fa-solid fa-user-doctor fa-2x"></i>
+            </div>
+            <div class="card-body">
+                <div class="card-text">
+                    Manage Doctors
+                </div>
+                <a routerLink="/admin/manage-doctors" class="card-link">Total Doctors: {{this.totalDoctors}}</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <i class="fa-solid fa-calendar-check fa-2x"></i>
+            </div>
+            <div class="card-body">
+                <div class="card-text">
+                    Appointments
+                </div>
+                <a routerLink="/admin/appointment-history" class="card-link">Appointments: {{this.totalAppointments}}</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <i class="fa-solid fa-user-injured fa-2x"></i>
+            </div>
+            <div class="card-body">
+                <div class="card-text">
+                    Manage Patients
+                </div>
+                <a routerLink="/admin/manage-patients" class="card-link">Total Patients: {{this.totalPatients}}</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <i class="fa-solid fa-envelope fa-2x"></i>
+            </div>
+            <div class="card-body">
+                <div class="card-text">
+                    New Queries
+                </div>
+                <a routerLink="/admin/unread-queries" class="card-link">Total Queries: {{this.totalNewQueries}}</a>
+            </div>
+        </div>
+    </div>
+    <div *ngSwitchCase="'doctor'" class="card-group">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa-solid fa-id-card fa-2x"></i>
+            </div>
+            <div class="card-body">
+                <div class="card-text">
+                    My Profile
+                </div>
+                <a routerLink="/doctor/edit-profile" class="card-link">View</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <i class="fa-solid fa-calendar-check fa-2x"></i>
+            </div>
+            <div class="card-body">
+                <div class="card-text">
+                    My Appointments
+                </div>
+                <a routerLink="/doctor/appointment-history" class="card-link">View</a>
+            </div>
+        </div>
+    </div>
+    <div *ngSwitchCase="'user'" class="card-group">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa-solid fa-id-card fa-2x"></i>
+            </div>
+            <div class="card-body">
+                <div class="card-text">
+                    My Profile
+                </div>
+                <a routerLink="/user/edit-profile" class="card-link">View</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <i class="fa-solid fa-calendar-check fa-2x"></i>
+            </div>
+            <div class="card-body">
+                <div class="card-text">
+                    My Appointments
+                </div>
+                <a routerLink="/user/appointments" class="card-link">View</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <i class="fa-solid fa-calendar-check fa-2x"></i>
+            </div>
+            <div class="card-body">
+                <div class="card-text">
+                    Book Appointment
+                </div>
+                <a routerLink="/user/book-appointment" class="card-link">View</a>
+            </div>
+        </div>
+    </div>
+</div>

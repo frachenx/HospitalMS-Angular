@@ -1,0 +1,197 @@
+<nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-brand">Hospital Management System</div>
+        <ul class="navbar-items">
+            <li class="navbar-item">
+                <div class="profile-dropdown" (click)="ToggleProfileDropdown()">
+                    <i class="fa-solid fa-user-astronaut fa-2x"></i>
+                    <div class="profile-dropdown-text">
+                        {{this.strUsername}}
+                        <i class="fa-solid fa-caret-down"></i>
+                    </div>
+                </div>
+                <div [ngSwitch]="this.strRole">
+                    <ul *ngSwitchCase="'admin'" class="profile-dropdown-content">
+                        <a routerLink="/admin/change-password">
+                            <li class="profile-dropdown-content-item">Change Password</li>
+                        </a>
+                        <a (click)="adminLogout()" style="cursor:pointer;">
+                            <li class="profile-dropdown-content-item">Logout</li>
+                        </a>
+                    </ul>
+                    <ul *ngSwitchCase="'doctor'" class="profile-dropdown-content">
+                        <a routerLink="/doctor/edit-profile">
+                            <li class="profile-dropdown-content-item">My Profile</li>
+                        </a>
+                        <a routerLink="/doctor/change-password">
+                            <li class="profile-dropdown-content-item">Change Password</li>
+                        </a>
+                        <a (click)="doctorLogout()" style="cursor:pointer;">
+                            <li class="profile-dropdown-content-item">Logout</li>
+                        </a>
+                    </ul>
+                    <ul *ngSwitchCase="'user'" class="profile-dropdown-content">
+                        <a routerLink="/user/edit-profile">
+                            <li class="profile-dropdown-content-item">My Profile</li>
+                        </a>
+                        <a routerLink="/user/change-password">
+                            <li class="profile-dropdown-content-item">Change Password</li>
+                        </a>
+                        <a (click)="userLogout()" style="cursor:pointer;">
+                            <li class="profile-dropdown-content-item">Logout</li>
+                        </a>
+                    </ul>
+                </div>
+
+            </li>
+        </ul>
+        <div class="mobile-toggle" (click)="toggleMobile()">
+            <i class="fa-solid fa-bars fa-2x"></i>
+        </div>
+    </div>
+
+    <div [ngSwitch]="this.strRole">
+        <div *ngSwitchCase="'admin'" class="mobile-navbar-items display-none">
+
+            <div class="mobile-navbar-item dropdown">
+                <div class="dropdown-toggle">
+                    <!-- <i class="fa-solid fa-user-astronaut fa-2x"></i> -->
+                    <i class="fa-solid fa-user-astronaut fa-2x"></i>
+                    <span class="mobile-navbar-item-name">
+                        <!-- Admin -->
+                        {{this.strUsername}}
+                    </span>
+                    <i class="fa-solid fa-caret-down "></i>
+                </div>
+                <div class="dropdown-menu display-none">
+                    <a routerLink="/admin/change-password">
+                        Change Password
+                    </a>
+                    <a style="cursor: pointer ;" (click)="adminLogout()">Logout</a>
+                </div>
+            </div>
+
+            <app-mobile-navbar-item [title]="'Dashboard'" [link]="'/admin/dashboard'" [icon]="'fa-solid fa-gauge'">
+            </app-mobile-navbar-item>
+
+            <app-mobile-navbar-item-dropdown [title]="'Doctors'" [icon]="'fa-solid fa-user-doctor'" [links]="[
+                    {route:'/admin/doctor-specialization',name:'Doctor Specialization'},
+                    {route:'/admin/add-doctor',name:'Add Doctor'},
+                    {route:'/admin/manage-doctors',name:'Manage Doctors'}]"></app-mobile-navbar-item-dropdown>
+
+            <app-mobile-navbar-item-dropdown [title]="'Users'" [icon]="'fa-solid fa-users'" [links]="[
+                    {route:'/admin/manage-users',name:'Manage Users'}]"></app-mobile-navbar-item-dropdown>
+
+            <app-mobile-navbar-item-dropdown [title]="'Patients'" [icon]="'fa-solid fa-bed-pulse'" [links]="[
+                    {route:'/admin/manage-patients',name:'Manage Patients'}]"></app-mobile-navbar-item-dropdown>
+
+            <app-mobile-navbar-item [title]="'Appointments'" [link]="'/admin/appointment-history'" [icon]="'fa-solid fa-calendar-check'">
+            </app-mobile-navbar-item>
+
+            <app-mobile-navbar-item-dropdown [title]="'Contact Us'" [icon]="'fa-solid fa-envelope'" [links]="[
+                    {route:'/admin/unread-queries',name:'Unread Queries'},
+                    {route:'/admin/read-queries',name:'Read Queries'}]"></app-mobile-navbar-item-dropdown>
+
+            <app-mobile-navbar-item [title]="'Doctor Logs'" [link]="'/admin/doctor-logs'" [icon]="'fa-solid fa-chart-column'">
+            </app-mobile-navbar-item>
+
+            <app-mobile-navbar-item [title]="'User Logs'" [link]="'/admin/user-logs'" [icon]="'fa-solid fa-chart-column'">
+            </app-mobile-navbar-item>
+
+            <app-mobile-navbar-item-dropdown [title]="'Reports'" [icon]="'fa-solid fa-flag'" [links]="[
+                    {route:'/admin/between-dates-report',name:'Between Dates'}]"></app-mobile-navbar-item-dropdown>
+
+            <app-mobile-navbar-item [title]="'Patient Search'" [link]="'/admin/patient-search'" [icon]="'fa-solid fa-magnifying-glass'">
+            </app-mobile-navbar-item>
+        </div>
+        <div *ngSwitchCase="'doctor'" class="mobile-navbar-items display-none">
+            <div class="mobile-navbar-item dropdown">
+                <div class="dropdown-toggle">
+                    <!-- <i class="fa-solid fa-user-astronaut fa-2x"></i> -->
+                    <i class="fa-solid fa-user-astronaut fa-2x"></i>
+                    <span class="mobile-navbar-item-name">
+                        <!-- Admin -->
+                        {{this.strUsername}}
+                    </span>
+                    <i class="fa-solid fa-caret-down "></i>
+                </div>
+                <div class="dropdown-menu display-none">
+                    <a routerLink="/doctor/edit-profile">
+                        My Profile
+                    </a>
+                    <a routerLink="/doctor/change-password">
+                        Change Password
+                    </a>
+                    <a style="cursor: pointer ;" (click)="doctorLogout()">Logout</a>
+                </div>
+            </div>
+
+            <app-mobile-navbar-item 
+                [title]="'Dashboard'" 
+                [link]="'/doctor/dashboard'" 
+                [icon]="'fa-solid fa-gauge'">
+            </app-mobile-navbar-item>
+
+            <app-mobile-navbar-item 
+                [title]="'Appointments'" 
+                [link]="'/doctor/appointment-history'" 
+                [icon]="'fa-solid fa-calendar-check'">
+            </app-mobile-navbar-item>
+
+            <app-mobile-navbar-item-dropdown 
+                [title]="'Patients'" 
+                [icon]="'fa-solid fa-bed-pulse'" 
+                [links]="[
+                    {route:'/doctor/add-patient',name:'Add Patient'},
+                    {route:'/doctor/manage-patients',name:'Manage Patients'}
+                ]">
+            </app-mobile-navbar-item-dropdown>
+
+            <app-mobile-navbar-item 
+                [title]="'Search'" 
+                [link]="'/doctor/patient-search'" 
+                [icon]="'fa-solid fa-magnifying-glass'">
+            </app-mobile-navbar-item>
+            
+        </div>
+        <div *ngSwitchCase="'user'" class="mobile-navbar-items display-none">
+            <div class="mobile-navbar-item dropdown">
+                <div class="dropdown-toggle">
+                    <i class="fa-solid fa-user-astronaut fa-2x"></i>
+                    <span class="mobile-navbar-item-name">
+                        <!-- Admin -->
+                        {{this.strUsername}}
+                    </span>
+                    <i class="fa-solid fa-caret-down "></i>
+                </div>
+                <div class="dropdown-menu display-none">
+                    <a routerLink="/user/edit-profile">
+                        My Profile
+                    </a>
+                    <a routerLink="/user/change-password">
+                        Change Password
+                    </a>
+                    <a style="cursor: pointer ;" (click)="userLogout()">Logout</a>
+                </div>
+            </div>
+
+            <app-mobile-navbar-item 
+                [title]="'Dashboard'" 
+                [link]="'/user/dashboard'" 
+                [icon]="'fa-solid fa-gauge'">
+            </app-mobile-navbar-item>
+
+            <app-mobile-navbar-item 
+                [title]="'Book Appointment'" 
+                [link]="'/user/book-appointment'" 
+                [icon]="'fa-solid fa-book-open'">
+            </app-mobile-navbar-item>
+
+            <app-mobile-navbar-item 
+                [title]="'Appointments'" 
+                [link]="'/user/appointments'" 
+                [icon]="'fa-solid fa-book-open'">
+            </app-mobile-navbar-item>
+        </div>
+    </div>
+</nav>

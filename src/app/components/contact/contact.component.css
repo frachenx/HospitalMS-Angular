@@ -1,0 +1,17 @@
+.contact-container{
+    margin: 2rem 2rem;
+}
+
+@media (min-width:800px) {
+    .contact-container{
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .contact-info{
+        width: 30%;
+    }
+    .contact-form{
+        width: 70%;
+    }
+}

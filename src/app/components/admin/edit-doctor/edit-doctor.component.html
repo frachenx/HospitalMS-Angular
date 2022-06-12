@@ -1,0 +1,66 @@
+<h1>ADMIN | EDIT DOCTOR DETAILS</h1>
+<hr>
+<h2>Edit Doctor info</h2>
+<h3>{{this.doctor.doctorName}}'s Profile</h3>
+<h3>Profile Reg. Date: {{this.doctor.createdDate}}</h3>
+<h3>Profile Last Updated Date: {{this.doctor.updatedDate}}</h3>
+
+<div class="edit-doctor-container">
+    <div *ngIf="this.resultString==='1'" class="alert alert-success">Doctor Updated Correctly</div>
+    <div *ngIf="this.resultString==='0'" class="alert alert-danger">Failed to Update Doctor</div>
+    <form [formGroup]="this.doctorForm" (ngSubmit)="Submit();">
+
+        <div class="form-group">
+            <label for="spec" class="label-control">Doctor Specialization</label>
+            <select formControlName="specID" name="spec" id="spec" class="form-control">
+                <option *ngFor="let specialty of specialties" value="{{specialty.id}}">{{specialty.spec}}</option>
+               >
+            </select>
+            <div *ngIf="this.specID?.invalid && (this.specID?.dirty || this.specID?.touched)" class="text-danger">
+                <small *ngIf="this.specID?.errors?.['required']">Specialization field is required</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name" class="label-control">Doctor Name</label>
+            <input formControlName="doctorName" type="text" name="name" id="name" class="form-control">
+            <div *ngIf="this.doctorName?.invalid && (this.doctorName?.dirty || this.doctorName?.touched)" class="text-danger">
+                <small *ngIf="this.doctorName?.errors?.['required']">Doctor name field is required</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="address" class="label-control">Address</label>
+            <textarea formControlName="address" name="address" id="address" rows="2" class="form-control">
+
+            </textarea>
+            <div *ngIf="this.address?.invalid && (this.address?.dirty || this.address?.touched)" class="text-danger">
+                <small *ngIf="this.address?.errors?.['required']">Address field is required</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="fee" class="label-control">Doctor Fee</label>
+            <input formControlName="docFee" class="form-control" step="any" type="number" name="fee" id="fee">
+            <div *ngIf="this.docFee?.invalid && (this.docFee?.dirty || this.docFee?.touched)" class="text-danger">
+                <small *ngIf="this.docFee?.errors?.['required']">Doctor fee field is required</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="contact" class="label-control">Contact No.</label>
+            <input formControlName="contact" type="tel" name="contact" id="contact" class="form-control">
+            <div *ngIf="this.contact?.invalid && (this.contact?.dirty || this.contact?.touched)" class="text-danger">
+                <small *ngIf="this.contact?.errors?.['required']">Contact field is required</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email" class="label-control">Doctor Email</label>
+            <input formControlName="email" type="email" name="email" id="email" class="form-control" readonly>
+            <div *ngIf="this.email?.invalid && (this.email?.dirty || this.email?.touched)" class="text-danger">
+                <small *ngIf="this.email?.errors?.['required']">Email field is required</small>
+                <small *ngIf="this.email?.errors?.['email']">Field is of type email</small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Update" class="btn btn-primary col-12">
+        </div>
+    </form>
+</div>

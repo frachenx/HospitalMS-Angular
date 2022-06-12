@@ -1,0 +1,52 @@
+<h1>ADMIN | VIEW PATIENTS</h1>
+
+<div class="container">
+    <h2>View Patients</h2>
+    <div class="table-container custom-scroll">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Patient Name</th>
+                    <th>Contact No.</th>
+                    <th>Gender</th>
+                    <th>Created Date</th>
+                    <th>Updated Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let patient of patients;let i=index">
+                    <td>
+                        <div class="row-index">
+                            {{i+1}}
+                        </div>
+                    </td>
+                    <td class="cell-avatar">
+                        <i class="row-avatar fa-solid fa-user-injured"></i>
+                    </td>
+                    <td data-title="Patient Name: " >
+                        {{patient.name}}
+                    </td>
+                    <td data-title="Contact No.: ">
+                        {{patient.contact}}
+                    </td>  
+                    <td data-title="Gender: ">
+                        {{patient.gender}}
+                    </td>
+                    <td data-title="Created Date: ">
+                        {{patient.createdDate}}
+                    </td>
+                    <td data-title="Updated Date: ">
+                        {{patient.updatedDate}}
+                    </td>
+                    <td>
+                        <a routerLink="/admin/view-patient/{{patient.id}}" class="btn btn-secondary">
+                            <i class="fa-solid fa-eye"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

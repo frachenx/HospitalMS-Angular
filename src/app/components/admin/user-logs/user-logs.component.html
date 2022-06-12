@@ -1,0 +1,43 @@
+<h1>ADMIN | USER SESSION LOGS</h1>
+<hr>
+<div class="table-container custom-scroll">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>User ID</th>
+                <th>Username</th>
+                <th>IP</th>
+                <th>Login Time</th>
+                <th>Logout Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let log of logs; let i=index">
+                <td>
+                    <div class="row-index">
+                        {{i+1}}
+                    </div>
+                </td>
+                <td class="cell-avatar">
+                    <i class="row-avatar fa-solid fa-user-doctor"></i>
+                </td>
+                <td data-title="User ID: ">
+                    {{log.userID}}
+                </td>
+                <td data-title="Username: ">
+                    {{log.username}}
+                </td>
+                <td data-title="User IP: ">
+                    {{log.userIP}}
+                </td>
+                <td data-title="Login Time: ">
+                    {{log.loginTime}}
+                </td>
+                <td data-title="Logout Time: ">
+                    {{log.logoutTime}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

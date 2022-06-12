@@ -1,0 +1,120 @@
+<h1>DOCTOR | MANAGE PATIENTS</h1>
+<hr>
+<div class="table-container custom-scroll">
+    <table class="table-details">
+        <tbody>
+            <tr>
+                <td class="title" colspan="4" >Patient Details</td>
+            </tr>
+            <tr>
+                <td class="cell-title"><strong>Patient Name</strong></td>
+                <td>{{this.patient.name}}</td>
+                <td class="cell-title"><strong>Patient Email</strong></td>
+                <td>{{this.patient.email}}</td>
+            </tr>
+            <tr>
+                <td class="cell-title"><strong>Patient Mobile Number</strong></td>
+                <td>{{this.patient.contact}}</td>
+                <td class="cell-title"><strong>Patient Address</strong></td>
+                <td>{{this.patient.address}}</td>
+            </tr>
+            <tr>
+                <td class="cell-title"><strong>Patient Gender</strong></td>
+                <td>{{this.patient.gender}}</td>
+                <td class="cell-title"><strong>Patient Age</strong></td>
+                <td>{{this.patient.age}}</td>
+            </tr>
+            <tr>
+                <td class="cell-title"><strong>Patient Medical History(if any)</strong></td>
+                <td>{{this.patient.medicalHistory}}</td>
+                <td class="cell-title"><strong>Patient Reg Date</strong></td>
+                <td>{{this.patient.createdDate}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="table-container custom-scroll">
+    <h2 style="text-align:center">Medical History</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Blood Pressure</th>
+                <th>Weight</th>
+                <th>Blood Sugar</th>
+                <th>Body Temperature</th>
+                <th>Medical Prescription</th>
+                <th>Visit Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let medHistory of medicalHistories;let i=index">
+                <td>
+                    <div class="row-index">
+                        {{i+1}}
+                    </div>
+                </td>
+                <td class="cell-avatar">
+                    <i class="row-avatar fa-solid fa-bed-pulse"></i>
+                </td>
+                <td data-title="Blood Pressure: ">
+                    {{medHistory.bloodPressure}}
+                </td>
+                <td data-title="Weight: ">
+                    {{medHistory.weight}}
+                </td>
+                <td data-title="Blood Sugar: ">
+                    {{medHistory.bloodSugar}}
+                </td>
+                <td data-title="Body Temperature: ">
+                    {{medHistory.temperature}}
+                </td>
+                <td data-title="Medical Prescription: ">
+                    {{medHistory.prescription}}
+                </td>
+                <td data-title="Visit Date">
+                    {{medHistory.createdDate}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<button class="btn btn-primary" (click)="toggleModal()">Add Medical History</button>
+
+<div class="modal-container">
+    <div *ngIf="this.resultString==='1'" class="alert alert-success">Added Medical History Correctly</div>
+    <div *ngIf="this.resultString==='0'" class="alert alert-danger">Failed to Add Medical History</div>
+    <div class="modal" id="myModal">
+        <span class="close-modal" (click)="toggleModal()">X</span>
+        <div class="modal-content">
+            <h1>Add Medical History</h1>
+            <hr style="border:solid white">
+            <form [formGroup]="this.medHistoryForm" (ngSubmit)="handleMedHistorySubmit()">
+                <div class="form-group">
+                    <label for="bloodPressure" class="label-control">Blood Pressure</label>
+                    <input formControlName="bloodPressure" type="text" name="bloodPressure" id="bloodPressure" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="bloodSugar" class="label-control">Blood Sugar</label>
+                    <input formControlName="bloodSugar" type="text" name="bloodSugar" id="bloodSugar" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="weight" class="label-control">Weight</label>
+                    <input formControlName="weight" type="text" name="weight" id="weight" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="temperature" class="label-control">Blood Temperature</label>
+                    <input formControlName="temperature" type="text" name="temperature" id="temperature" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="prescription" class="label-control">Prescription</label>
+                    <textarea formControlName="prescription" name="prescription" id="prescription" rows="3" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Submit Medical History" class="btn btn-primary">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="user-login-container">
+    <div class=""></div>
+    <div class="user-login">
+        <h1 class="title">HMS | Patient Login</h1>
+        <div class="subtitle-1">Sign in to your account</div>
+        <div class="subtitle-2">Please enter your name and password to log in.</div>
+        <div *ngIf="this.error=='1'" class="alert alert-danger">Invalid email/password</div>
+        <form [formGroup]="this.loginForm" (ngSubmit)="Submit()">
+            <div class="form-group">
+                <label for="email" class="label-control">Email</label>
+                <input formControlName="email" type="email" name="email" id="email" class="form-control">
+                <div *ngIf="this.email?.invalid && (this.email?.dirty || this.email?.touched)" class="text-danger">
+                    <div><small *ngIf="this.email?.errors?.['required']">Email is required</small></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="label-control">Password</label>
+                <input formControlName="password" type="password" name="password" id="password" class="form-control"
+                    autocomplete="off">
+                <div *ngIf="this.password?.invalid && (this.password?.dirty || this.password?.touched)"
+                    class="text-danger">
+                    <div><small *ngIf="this.password?.errors?.['required']">Password is required</small></div>
+                </div>
+            </div>
+            <div class="form-submit-btn">
+                <input type="submit" value="Login" class="btn btn-primary col-12">
+            </div>
+        </form>
+        <div class="register">
+            <span>Don't have an account yet? <a routerLink="/home/user-register" class="register-link">Create an
+                    account</a></span>
+        </div>
+    </div>
+    <div class=""></div>
+</div>

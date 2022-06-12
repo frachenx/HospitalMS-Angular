@@ -1,0 +1,46 @@
+<h1>ADMIN | MANAGE READ QUERIES</h1>
+<h2>Manage Read Queries</h2>
+
+<div class="table-container custom-scroll">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Contact No.</th>
+                <th>Message</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let query of queries; let i =index">
+                <td>
+                    <div class="row-index">
+                        {{i+1}}
+                    </div>
+                </td>
+                <td class="cell-avatar">
+                    <i class="row-avatar fa-solid fa-envelope"></i>
+                </td>
+                <td data-title="Name: ">
+                    {{query.name}}
+                </td>
+                <td data-title="Email: ">
+                    {{query.email}}
+                </td>
+                <td data-title="Contact No.: ">
+                    {{query.contact}}
+                </td>
+                <td data-title="Message: ">
+                    {{query.message}}
+                </td>
+                <td>
+                    <a routerLink="/admin/query-details/{{query.id}}" class="btn btn-secondary">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

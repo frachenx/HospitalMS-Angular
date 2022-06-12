@@ -1,0 +1,9 @@
+.appointment-form{
+    width: 50%;
+}
+
+@media (max-width:700px){
+    .appointment-form{
+        width: 100%;
+    }
+}

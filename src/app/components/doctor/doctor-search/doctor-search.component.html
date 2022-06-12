@@ -1,0 +1,61 @@
+<h1>ADMIN | VIEW PATIENTS</h1>
+<hr>
+<form [formGroup]="this.searchForm" class="search-form" (ngSubmit)="handleSubmit()">
+    <div *ngIf="this.resultString==='0'" class="alert alert-danger">Patient Search Failed, Try Again Please...</div>
+    <div class="form-group">
+        <label for="search" class="label-control">Search by name: </label>
+        <input formControlName="search" type="text" name="search" id="search" class="form-control">
+        <input type="submit" value="Search Patient" class="btn btn-primary">
+    </div>
+</form>
+
+<div *ngIf="this.patients.length>0" class="table-container custom-scroll">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Patient Name</th>
+                <th>Patient Contact Number</th>
+                <th>Patient Gender</th>
+                <th>Created Date</th>
+                <th>Updated Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let patient of patients;let i=index">
+                <td>
+                    <div class="row-index">
+                        {{i+1}}
+                    </div>
+                </td>
+                <td class="cell-avatar">
+                    <i class="row-avatar fa-solid fa-bed-pulse"></i>
+                </td>
+                <td data-title="Patient Name: ">
+                    {{patient.name}}
+                </td>
+                <td data-title="Patient Contact No.: ">
+                    {{patient.contact}}
+                </td>
+                <td data-title="Patient Gender: ">
+                    {{patient.gender}}
+                </td>
+                <td data-title="Created Date: ">
+                    {{patient.createdDate}}
+                </td>
+                <td data-title="Updated Date: ">
+                    {{patient.updatedDate}}
+                </td>
+                <td>
+                    <a routerLink="/doctor/edit-patient/{{patient.id}}" class="btn btn-secondary">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </a>
+                    <a routerLink="/doctor/view-patient/{{patient.id}}" class="btn btn-secondary">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

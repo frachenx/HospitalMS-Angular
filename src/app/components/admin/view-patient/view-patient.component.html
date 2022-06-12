@@ -1,0 +1,74 @@
+<h1>DOCTOR | MANAGE PATIENTS</h1>
+<h2>Manage Patients</h2>
+
+<div class="table-container custom-scroll">
+    <table class="table-details">
+        <tbody>
+            <tr>
+                <td class="title" colspan="4" >Patient Details</td>
+            </tr>
+            <tr>
+                <td class="cell-title"><strong>Patient Name</strong></td>
+                <td>{{this.patient.name}}</td>
+                <td class="cell-title"><strong>Patient Email</strong></td>
+                <td>{{this.patient.email}}</td>
+            </tr>
+            <tr>
+                <td class="cell-title"><strong>Patient Mobile Number</strong></td>
+                <td>{{this.patient.contact}}</td>
+                <td class="cell-title"><strong>Patient Address</strong></td>
+                <td>{{this.patient.address}}</td>
+            </tr>
+            <tr>
+                <td class="cell-title"><strong>Patient Gender</strong></td>
+                <td>{{this.patient.gender}}</td>
+                <td class="cell-title"><strong>Patient Age</strong></td>
+                <td>{{this.patient.age}}</td>
+            </tr>
+            <tr>
+                <td class="cell-title"><strong>Patient Medical History(if any)</strong></td>
+                <td>{{this.patient.medicalHistory}}</td>
+                <td class="cell-title"><strong>Patient Reg Date</strong></td>
+                <td>{{this.patient.createdDate}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div style="margin-top:50px ;" class="table-container custom-scroll">
+    <div class="mh-title">
+        <h2>Medical History</h2>
+        <hr/>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Blood Pressure</th>
+                <th>Weight</th>
+                <th>Blood Sugar</th>
+                <th>Body Temperature</th>
+                <th>Medical Prescription</th>
+                <th>Visit Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let history of medHistory;let i=index">
+                <td>
+                    <div class="row-index">
+                        {{i+1}}
+                    </div>
+                </td>
+                <td class="cell-avatar">
+                    <i class="row-avatar fa-solid fa-clipboard"></i>
+                </td>
+                <td data-title="Blood Pressure: ">{{history.bloodPressure}}</td>
+                <td data-title="Weight: ">{{history.weight}}</td>
+                <td data-title="Blood Sugar: ">{{history.bloodSugar}}</td>
+                <td data-title="Body Temperature: ">{{history.temperature}}</td>
+                <td data-title="Medical Prescription: ">{{history.prescription}}</td>
+                <td data-title="Visit Date: ">{{history.createdDate}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

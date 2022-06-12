@@ -1,0 +1,91 @@
+<h1>ADMIN | ADD DOCTOR</h1>
+<hr>
+
+<form class="doctorForm" [formGroup]="this.doctorForm" (ngSubmit)="Submit()">
+    <div *ngIf="this.resultString==='1'" class="alert alert-success">Added Doctor Successfully</div>
+    <div *ngIf="this.resultString==='0'" class="alert alert-danger">Failed While Adding Doctor</div>
+    <div class="form-group">
+        <label for="spec" class="label-control">Doctor Specialization</label>
+        <select  formControlName="specID" name="spec" id="spec" class="form-control">
+            <option value=""></option>
+            <option *ngFor="let specialty of specialties" value="{{specialty.id}}">{{specialty.spec}}</option>
+        </select>
+        <div *ngIf="this.specID?.invalid && (this.specID?.dirty || this.specID?.touched)" class="text-danger">
+            <small *ngIf="this.specID?.errors?.['required']">
+                Specialty field is required
+            </small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="name" class="label-control">Doctor Name</label>
+        <input formControlName="doctorName" type="text" name="name" id="name" class="form-control">
+        <div *ngIf="this.doctorName?.invalid && (this.doctorName?.dirty || this.doctorName?.touched)" class="text-danger">
+            <small *ngIf="this.doctorName?.errors?.['required']">
+                Doctor name field is required
+            </small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="address" class="label-control">Doctor Address</label>
+        <textarea formControlName="address" name="address" id="address" rows="2" class="form-control">
+
+        </textarea>
+        <div *ngIf="this.address?.invalid && (this.address?.dirty || this.address?.touched)" class="text-danger">
+            <small *ngIf="this.address?.errors?.['required']">
+                Address field is required
+            </small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="fee" class="label-control">Doctor Consultancy Fee</label>
+        <input formControlName="docFee" step="any" type="number" name="fee" id="fee" class="form-control">
+        <div *ngIf="this.docFee?.invalid && (this.docFee?.dirty || this.docFee?.touched)" class="text-danger">
+            <small *ngIf="this.docFee?.errors?.['required']">
+                Doctor fee field is required
+            </small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="contact" class="label-control">Doctor Contact No.</label>
+        <input formControlName="contact" type="tel" name="contact" id="contact" class="form-control">
+        <div *ngIf="this.contact?.invalid && (this.contact?.dirty || this.contact?.touched)" class="text-danger">
+            <small *ngIf="this.contact?.errors?.['required']">
+                Contact field is required
+            </small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="email" class="label-control">Email</label>
+        <input formControlName="email" type="email" name="email" id="email" class="form-control">
+        <div *ngIf="this.email?.invalid && (this.email?.dirty || this.email?.touched)" class="text-danger">
+            <small *ngIf="this.email?.errors?.['required']">
+                Email field is required
+            </small>
+            <small *ngIf="this.email?.errors?.['email']">
+                Field is required to be of type email
+            </small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password" class="label-control">Password</label>
+        <input formControlName="password" type="password" name="password" id="password" class="form-control" autocomplete="off">
+        <div *ngIf="this.password?.invalid && (this.password?.dirty || this.password?.touched)" class="text-danger">
+            <small *ngIf="this.password?.errors?.['required']">
+                Password field is required
+            </small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="confirmPassword" class="label-control">Confirm Password</label>
+        <input formControlName="confirmPassword" type="password" name="confirmPassword" id="confirmPassword" class="form-control" autocomplete="off" (change)="checkPasswords()">
+        <div *ngIf="this.confirmPassword?.invalid && (this.confirmPassword?.dirty || this.confirmPassword?.touched)" class="text-danger">
+            <small *ngIf="this.confirmPassword?.errors?.['required']">
+                Confirm password field is required
+            </small>
+        </div>
+        <small *ngIf="this.passwordWarning==='1'" class="text-danger">Passwords don't match</small>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Add Doctor" class="btn btn-primary col-12">
+    </div>
+</form>

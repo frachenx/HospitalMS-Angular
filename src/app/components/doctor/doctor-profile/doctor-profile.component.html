@@ -1,0 +1,41 @@
+<h1>DOCTOR | EDIT DOCTOR DETAILS</h1>
+<h2>Edit Doctor</h2>
+<h2>{{this.doctor.doctorName}}'s Profile</h2>
+<h2>Profile Reg. Date: {{this.doctor.createdDate}}</h2>
+<h2>Profile Last Updation Date: {{this.doctor.updatedDate}}</h2>
+
+<form class="profile-form" [formGroup]="this.doctorForm" (ngSubmit)="handleSubmit()">
+    <div *ngIf="this.resultString==='1'" class="alert alert-success">Updated Doctor Info Successfully</div>
+    <div *ngIf="this.resultString==='0'" class="alert alert-danger">Failed to Update Doctor Info</div>
+    <div class="form-group">
+        <label for="spec" class="label-control">Doctor Specialization</label>
+        <select formControlName="specID" name="spec" id="spec" class="form-control">
+            <option *ngFor="let spec of specialties;" value="{{spec.id}}">{{spec.spec}}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="name" class="label-control">Doctor Name</label>
+        <input formControlName="doctorName" type="text" name="name" id="name" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="address" class="label-control">Doctor Clinic Address</label>
+        <textarea formControlName="address" name="address" id="address" rows="2" class="form-control">
+
+        </textarea>
+    </div>
+    <div class="form-group">
+        <label for="fee" class="label-for">Doctor Consultancy Fees</label>
+        <input formControlName="docFee" type="number" step="any" name="fee" id="fee" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="contact" class="label-control">Doctor Contact No.</label>
+        <input formControlName="contact" type="text" name="contact" id="contact" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="email" class="label-control">Doctor Email</label>
+        <input formControlName="email" type="email" name="email" id="email" class="form-control">
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Update Profile" class="btn btn-primary">
+    </div>
+</form>

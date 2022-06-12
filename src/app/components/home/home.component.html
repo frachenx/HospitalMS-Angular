@@ -1,0 +1,22 @@
+<nav class="home-navbar">
+    <div class="home-navbar-container">
+        <div class="home-navbar-brand">Hospital Management System</div>
+        <ul class="home-navbar-items">
+            <a routerLink="/home" class="li home-navbar-item fa-2x">
+                <i class="fa-solid fa-house-chimney"></i>
+            </a>
+            <a routerLink="contact" class="li home-navbar-item fa-2x">
+                <i class="fa-solid fa-envelope"></i>
+            </a>
+        </ul>
+        <div class="navbar-toggle" (click)="this.navbarToggle()">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </div>
+    <div class="mobile-home-navbar-items display-none">
+        <a href=""><i class="fa-solid fa-house-chimney"></i> Home</a>
+        <a href=""><i class="fa-solid fa-envelope"></i> Contact</a>
+    </div>
+</nav>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,18 @@
+<div class="mobile-navbar-item dropdown">
+    <div class="dropdown-toggle">
+        <!-- <i class="fa-solid fa-user-astronaut fa-2x"></i> -->
+        <i class="{{icon}} fa-2x"></i>
+        <span class="mobile-navbar-item-name">
+            <!-- Admin -->
+            {{title}}
+        </span>
+        <i class="fa-solid fa-caret-down "></i>
+    </div>
+    <div class="dropdown-menu display-none">
+        <a *ngFor="let link of links" routerLink="{{link.route}}">
+            {{link.name}}
+        </a>
+        <!-- <a routerLink="/admin/change-password">Change Password</a>
+        <a routerLink="/logout">Logout</a> -->
+    </div>
+</div>

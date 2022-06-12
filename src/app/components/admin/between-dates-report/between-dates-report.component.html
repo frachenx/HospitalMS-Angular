@@ -1,0 +1,62 @@
+<h1>BETWEEN DATES | REPORTS</h1>
+<form class="reportForm" [formGroup]="reportForm" (ngSubmit)="Submit()">
+    <div class="form-group">
+        <label for="start" class="label-control">From Date:</label>
+        <input formControlName="start" type="date" name="start" id="start" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="end" class="label-control">End Date:</label>
+        <input formControlName="end" type="date" name="end" id="end" class="form-control">
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Search" class="btn btn-primary">
+    </div>
+</form>
+
+<div *ngIf="this.patients!=null" class="table-container custom-scroll">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Gender</th>
+                <th>Created Date</th>
+                <th>Updated Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let patient of patients;let i= index">
+                <td>
+                    <div class="row-index">
+                        {{i+1}}
+                    </div>
+                </td>
+                <td class="cell-avatar">
+                    <i class="row-avatar fa-solid fa-user-injured"></i>
+                </td>
+                <td data-title="Name: ">
+                    {{patient.name}}
+                </td>
+                <td data-title="Contact: ">
+                    {{patient.contact}}
+                </td>
+                <td data-title="Gender: ">
+                    {{patient.gender}}
+                </td>
+                <td data-title="Created Date: ">
+                    {{patient.createdDate}}
+                </td>
+                <td data-title="Updated Date: ">
+                    {{patient.updatedDate}}
+                </td>
+                <td>
+                    <a routerLink="/admin/view-patient/{{patient.id}}" class="btn btn-secondary">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

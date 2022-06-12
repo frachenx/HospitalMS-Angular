@@ -1,0 +1,54 @@
+<h1>USER | EDIT USER DETAILS</h1>
+<h2>Edit User</h2>
+<h2>{{this.user.fullname}}'s Profile</h2>
+<h2>Profile Reg. Date: {{this.user.createdDate}}</h2>
+<h2>Profile Last Updation Date: {{this.user.updatedDate}}</h2>
+
+<form class="profile-form" [formGroup]="this.userForm" (ngSubmit)="handleSubmit()">
+    <div *ngIf="this.resultString==='1'" class="alert alert-success">Updated User Info Successfully</div>
+    <div *ngIf="this.resultString==='0'" class="alert alert-danger">Failed to Update User Info</div>
+    <div class="form-group">
+        <label for="name" class="label-control">Patient Name</label>
+        <input formControlName="fullname" type="text" name="name" id="name" class="form-control">
+        <div *ngIf="this.fullname?.invalid && (this.fullname?.dirty || this.fullname?.touched)" class="text-danger">
+            <small *ngIf="this.fullname?.errors?.['required']">Name field is required</small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="address" class="label-control">Address</label>
+        <textarea formControlName="address" name="address" id="address" rows="2" class="form-control">
+        </textarea>
+        <div *ngIf="this.address?.invalid && (this.address?.dirty || this.address?.touched)" class="text-danger">
+            <small *ngIf="this.address?.errors?.['required']">Address field is required</small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="city" class="label-control">City</label>
+        <input formControlName="city" type="text" name="city" id="city" class="form-control">
+        <div *ngIf="this.city?.invalid && (this.city?.dirty || this.city?.touched)" class="text-danger">
+            <small *ngIf="this.city?.errors?.['required']">City field is required</small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="gender" class="label-control">Gender</label>
+        <select formControlName="gender" name="gender" id="gender" class="form-control">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+        <div *ngIf="this.gender?.invalid && (this.gender?.dirty || this.gender?.touched)" class="text-danger">
+            <small *ngIf="this.gender?.errors?.['required']">Name field is required</small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="email" class="label-control">Email</label>
+        <input formControlName="email" type="email" name="email" id="email" class="form-control" readonly> 
+        <div *ngIf="this.email?.invalid && (this.email?.dirty || this.email?.touched)" class="text-danger">
+            <small *ngIf="this.email?.errors?.['required']">Name field is required</small>
+            <small *ngIf="this.email?.errors?.['email']">Field is required to be of type email</small>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Update Profile" class="btn btn-primary">
+    </div>
+</form>

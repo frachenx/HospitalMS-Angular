@@ -1,5 +1,6 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
-
+/src/assets/font awesome
+/src/assets/fonts
 # compiled output
 /dist
 /tmp

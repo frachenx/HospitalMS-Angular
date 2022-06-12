@@ -1,0 +1,9 @@
+.form-patient{
+    width:50%
+}
+
+@media (max-width:700px) {
+    .form-patient{
+        width:100%
+    }
+}

@@ -1,0 +1,9 @@
+.specForm{
+    width: 50%;
+}
+
+@media (max-width:700px) {
+    .specForm{
+        width: 100%;
+    }
+}

@@ -1,0 +1,38 @@
+<h1>DOCTOR | APPOINTMENT HISTORY</h1>
+<hr>
+
+<div class="table-container custom-scroll">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Patient Name</th>
+                <th>Specialization</th>
+                <th>Consultancy Fee</th>
+                <th>Appointment Date/Time</th>
+                <th>Appointment Created Date</th>
+                <th>Current Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let appointment of this.appointments; let i=index">
+                <td>
+                    <div class="row-index">
+                        {{i+1}}
+                    </div>
+                </td>
+                <td class="cell-avatar">
+                    <i class="row-avatar fa-solid fa-calendar-check"></i>
+                </td>
+                <td data-title="Patient Name: ">{{appointment.patientName}}</td>
+                <td data-title="Specialization: ">{{appointment.spec}}</td>
+                <td data-title="Consultancy Fee: ">{{appointment.fee}}</td>
+                <td data-title="Appointment Date/Time: ">{{appointment.dateTime}}</td>
+                <td data-title="Appointment Created Date: ">{{appointment.createdDate}}</td>
+                <td data-title="Current Status: ">{{appointment.status}}</td>
+                <td data-title="Action: ">{{appointment.action}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

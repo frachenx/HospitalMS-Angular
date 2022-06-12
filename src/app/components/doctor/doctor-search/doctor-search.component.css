@@ -1,0 +1,9 @@
+.search-form{
+    width:50%
+}
+
+@media (max-width:700px) {
+    .search-form{
+        width:100%
+    }
+}

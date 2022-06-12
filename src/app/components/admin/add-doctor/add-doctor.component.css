@@ -1,0 +1,9 @@
+.doctorForm{
+    width: 50%;
+}
+
+@media (max-width:700px) {
+    .doctorForm{
+        width: 100%;
+    }
+}
