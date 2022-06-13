@@ -50,6 +50,7 @@ import { DoctorSearchComponent } from './components/doctor/doctor-search/doctor-
 import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 import { UserAppointmentsComponent } from './components/user/user-appointments/user-appointments.component';
 import { BookAppointmentComponent } from './components/user/book-appointment/book-appointment.component';
+import { UserChangePasswordComponent } from './components/user/user-change-password/user-change-password.component';
 
 @NgModule({
   declarations: [
@@ -98,7 +99,8 @@ import { BookAppointmentComponent } from './components/user/book-appointment/boo
     DoctorSearchComponent,
     UserProfileComponent,
     UserAppointmentsComponent,
-    BookAppointmentComponent
+    BookAppointmentComponent,
+    UserChangePasswordComponent
   ],
   imports: [
     BrowserModule,

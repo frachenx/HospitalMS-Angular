@@ -56,11 +56,11 @@ export class UserService {
   }
 
   changePassword(userID:number,newPassword:string){
-    return this.http.post<boolean>(`${environment.baseURL}/user/change-password.php`,{userID,newPassword})
+    return this.http.put<boolean>(`${environment.baseURL}/user/change-password.php`,{userID,newPassword})
   }
   
   checkPassword(userID:number,currentPassword:string){
-    return this.http.post<boolean>(`${environment.baseURL}/user/check-password.php`,{userID,currentPassword})
+    return this.http.put<boolean>(`${environment.baseURL}/user/check-password.php`,{userID,currentPassword})
   }
 
   update(user:User){
